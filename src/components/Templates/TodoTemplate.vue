@@ -13,11 +13,11 @@ const todoStore = useTodoStore()
   </div>
   <!-- Todo追加エリア -->
   <section class="common">
-    <AddTodo v-model:add-input-value="todoStore.addInputValue" :on-add-todo="todoStore.handleAddTodo" />
+    <AddTodo v-model:add-input-value="todoStore.state.addInputValue" :on-add-todo="todoStore.handleAddTodo" />
   </section>
   <!-- Todo フォームエリア -->
   <section class="common">
-    <InputForm v-model="todoStore.searchKeyword" :placeholder="`Search Keyword`" />
+    <InputForm v-model="todoStore.state.searchKeyword" :placeholder="`Search Keyword`" />
   </section>
   <!-- Todo 一覧表示エリア -->
   <section class="common">
