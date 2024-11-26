@@ -13,7 +13,7 @@ const todoStore = useTodoStore()
   </div>
   <!-- Todo追加エリア -->
   <section class="common">
-    <AddTodo v-model:add-input-value="todoStore.state.addInputValue" :on-add-todo="todoStore.handleAddTodo" />
+    <AddTodo />
   </section>
   <!-- Todo フォームエリア -->
   <section class="common">
@@ -21,7 +21,7 @@ const todoStore = useTodoStore()
   </section>
   <!-- Todo 一覧表示エリア -->
   <section class="common">
-    <TodoList :todo-list="todoStore.showTodoList" @on-delete-todo="todoStore.handleDeleteTodo" />
+    <TodoList />
   </section>
 </template>
 

@@ -1,31 +1,14 @@
 <script setup>
-const { todoList } = defineProps({
-  todoList: {
-    type: Array,
-    required: true
-  }
-})
+import { useTodoStore } from '../../stores/todoStore'
 
-const emit = defineEmits(['onDeleteTodo'])
-
-const handleDeleteClick = (targetId, targetTitle) => {
-  emit('onDeleteTodo', targetId, targetTitle)
-}
+const todoStore = useTodoStore()
 </script>
 
 <template>
   <ul class="list">
-    <li
-      v-for="(todo, index) in todoList"
-      :key="index"
-      class="todo"
-    >
+    <li v-for="(todo, index) in todoStore.showTodoList" :key="index" class="todo">
       <span class="task">{{ todo.title }}</span>
-      <font-awesome-icon
-        class="far"
-        icon="fa-trash"
-        @click="handleDeleteClick(todo.id, todo.title)"
-      />
+      <font-awesome-icon class="far" icon="fa-trash" @click="todoStore.handleDeleteTodo(todo.id, todo.title)" />
     </li>
   </ul>
 </template>
