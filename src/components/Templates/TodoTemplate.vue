@@ -2,37 +2,26 @@
 import AddTodo from '../Organisms/AddTodo.vue'
 import TodoList from '../Organisms/TodoList.vue'
 import InputForm from '../Atoms/InputForm.vue'
-import { useTodoTemplate } from '../../composables/useTodoTemplate'
+import { useTodoStore } from '../../stores/todoStore'
 
-const { showTodoList, addInputValue, searchKeyword, handleAddTodo, handleDeleteTodo } = useTodoTemplate()
+const todoStore = useTodoStore()
 </script>
 
 <template>
   <div class="container">
-    <h1 class="title">
-      Todo List
-    </h1>
+    <h1 class="title">Todo List</h1>
   </div>
   <!-- Todo追加エリア -->
   <section class="common">
-    <AddTodo
-      v-model:add-input-value="addInputValue"
-      :on-add-todo="handleAddTodo"
-    />
+    <AddTodo v-model:add-input-value="todoStore.addInputValue" :on-add-todo="todoStore.handleAddTodo" />
   </section>
   <!-- Todo フォームエリア -->
   <section class="common">
-    <InputForm
-      v-model="searchKeyword"
-      :placeholder="`Search Keyword`"
-    />
+    <InputForm v-model="todoStore.searchKeyword" :placeholder="`Search Keyword`" />
   </section>
   <!-- Todo 一覧表示エリア -->
   <section class="common">
-    <TodoList
-      :todo-list="showTodoList"
-      @on-delete-todo="handleDeleteTodo"
-    />
+    <TodoList :todo-list="todoStore.showTodoList" @on-delete-todo="todoStore.handleDeleteTodo" />
   </section>
 </template>
 
